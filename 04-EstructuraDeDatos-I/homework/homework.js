@@ -15,9 +15,15 @@ Como ejercicio adicional y completamente opcional, al terminar de resolver este 
 */
 
 function nFactorial(n) {
+  if ( n < 0 || !Number.isInteger( n ) ) return 0;
+  if ( n === 0 ) return 1;
+  return n * nFactorial( n - 1 );
 }
 
 function nFibonacci(n) {
+  if ( n <= 0 || !Number.isInteger( n ) ) return 0;
+  if ( n === 1 ) return 1;
+  return nFibonacci( n -1) + nFibonacci( n - 2 );
 }
 
 /*
@@ -30,8 +36,17 @@ Pueden utilizar class o función constructora.
 */
 
 function Queue() {
-
+  constructor()
+    this.data=[];
 }
+Queue.prototype.enqueue = function(valor) {
+  return this.data.push(valor);
+}
+Queue.prototype.dequeue = function(){ 
+  if (this.data.length>0) return this.data.shift();
+  else return undefined;
+}
+Queue.prototype.size = function() { return this.data.length; }
 
 // No modifiquen nada debajo de esta linea
 // --------------------------------
